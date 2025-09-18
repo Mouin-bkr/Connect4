@@ -1,101 +1,110 @@
-body
-{
- background-color: cornflowerblue;
-font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-.app-container{
-    width: 800px;
-    height: 150px;
-    position: absolute;
-    left: 50%;
-    top: 30%;
-    margin-left: -400px;
-}
-.panel {
-position: absolute;
-background-color:lightgoldenrodyellow ;
-border: 8px solid burlywood;
--webkit-box-shadow:7px 5px 15px rgba(0,0,0,0.9);
-box-shadow: 7px 5px 15px 3px rgba(0,0,0,0.9);
-z-index: 1;
-}
-.header{
-    left: 50%;
-    top: -30px;
-    height: 80px;
-    width: 300px;
-    margin-left: -120px;
+body {
+  background-color: cornflowerblue;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Fill screen */
 }
 
-.header-text{
-font-size: 30px;
-font-weight: bold;
-width: 200px;
-margin: 0;
-position: absolute;
-top: 50%;
-left: 50%;
--ms-transform: translate(-50%,-50%);
-transform: translate(-50%,-50%);    
+.app-container {
+  display: flex;
+  flex-direction: column; /* Stack header, board, footer vertically */
+  align-items: center;
+  gap: 20px; /* Space between elements */
+  padding: 20px;
+  max-width: 600px;
+  width: 90%;
 }
 
-.footer{
-    margin-top: 610px;
-    background-color: lightgoldenrodyellow;
-    height: 80px;
-    width: 300px;
-    margin-left: 270px;
-    border: 8px solid burlywood;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    
+/* HEADER */
+.header {
+  background-color: lightgoldenrodyellow;
+  border: 6px solid burlywood;
+  box-shadow: 7px 5px 15px rgba(0, 0, 0, 0.9);
+  border-radius: 12px;
+  padding: 10px 20px;
+  width: 100%;
+  text-align: center;
 }
-.footer button{
-    margin-top: 15px;
-    margin-left: 5px;
-    height: 50px;
-    width: 140px;
-    background-color: lightblue;
-    font-size: 20px;
-    -webkit-box-shadow:3px 5px 10px 2px rgba(0,0,0,0.9);
-    box-shadow: 3px 5px 10px 2px rgba(0,0,0,0.9);
-    border: 5px solid chocolate;
-    font-weight: bold;
-}
-.footer button:hover{
-    background-color: chocolate;
-}
-.gameBoard{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    grid-template-rows:repeat(4,1fr);
-    padding:20px;
-    width:500px;
-    position:absolute;
-    left:50%;
-    margin-left:-250px;
-    top:20%;
-    background-color: bisque;
-    border: 8px solid burlywood;
-    border-radius: 8%;
-    -webkit-box-shadow:7px 5px 15px rgba(0,0,0,0.9);
-    box-shadow: 7px 5px 15px 3px rgba(0,0,0,0.9);
-}
-.gameCircle{
-    width:100px;
-      height:100px;
-      margin:10px; 
-      border-radius:50%;
-      border: 5px solid black;
 
-      
+.header-text {
+  font-size: clamp(20px, 5vw, 32px); /* Responsive font */
+  font-weight: bold;
+  margin: 0;
 }
-.player0{
-    background-color: white;
+
+/* GAME BOARD */
+.gameBoard {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  background-color: bisque;
+  border: 8px solid burlywood;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 7px 5px 15px rgba(0, 0, 0, 0.9);
+  max-width: 450px;
+  width: 100%;
 }
-.player1{
-    background-color: red;
+
+.gameCircle {
+  aspect-ratio: 1 / 1; /* Keeps perfect circle */
+  border-radius: 50%;
+  border: 4px solid black;
+  background-color: white;
 }
-.player2{
-    background-color: blue;
+
+/* Player colors */
+.player0 {
+  background-color: white;
+}
+.player1 {
+  background-color: red;
+}
+.player2 {
+  background-color: blue;
+}
+
+/* FOOTER */
+.footer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  background-color: lightgoldenrodyellow;
+  border: 6px solid burlywood;
+  border-radius: 12px;
+  box-shadow: 7px 5px 15px rgba(0, 0, 0, 0.9);
+  padding: 15px;
+  width: 100%;
+}
+
+.footer button {
+  height: 50px;
+  background-color: lightblue;
+  font-size: 18px;
+  font-weight: bold;
+  border: 4px solid chocolate;
+  box-shadow: 3px 5px 10px rgba(0, 0, 0, 0.9);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.footer button:hover {
+  background-color: chocolate;
+  color: white;
+}
+
+/* RESPONSIVENESS */
+@media (max-width: 500px) {
+  .gameBoard {
+    grid-template-columns: repeat(4, minmax(50px, 1fr));
+    gap: 5px;
+  }
+
+  .footer {
+    grid-template-columns: 1fr; /* Stack buttons vertically */
+  }
 }
